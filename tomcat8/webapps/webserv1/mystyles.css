@@ -1,0 +1,79 @@
+header ul
+{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+	overflow: hidden;
+}
+header li
+{
+    display: inline;
+    margin: 0px 0px 3px 0px;
+    border: solid #CD7F32 3px;
+	padding: 8px;
+    background-color: #008080;
+	float: left;
+}
+
+div ul
+{
+	list-style-type: none;
+    margin: 0;
+    padding: 0;
+	overflow: hidden;
+}
+
+div li
+{
+	display: block;
+    margin: 0px 0px 3px 0px;
+    border: solid #CD7F32 3px;
+	padding: 8px;
+    background-color: #008080;
+	float: left;
+	text-align: center;
+}
+body
+{
+    background-color: #F0EAD6;
+    margin: 0 auto !important;
+	max-width: 280px;
+	border: solid 2px #CD7F32;
+}
+
+#news
+{
+	font-size: 12;
+}
+
+#lot
+{
+	width: 280px;
+	height: auto;
+}
+h2
+{
+	text-align: center;
+	padding: 0;
+	margin: 2px;
+	
+}
+/* unvisited link */
+a:link {
+    color: white;
+}
+
+/* visited link */
+a:visited {
+    color: #ffc600;
+}
+
+/* mouse over link */
+a:hover {
+    color: lime;
+}
+
+/* selected link */
+a:active {
+    color: green;
+}

@@ -1,0 +1,71 @@
+<html>
+  <head lang="en">
+    <meta charset="UTF-8">
+    <title>"Extended Lot Parking"</title>
+    <link rel="stylesheet" href="mystyles.css">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script>
+      $(document).ready( function() {
+      $("#btnAllSpots").click(function() {
+      var inputId="extendedlot";
+      var theUrl =
+      "http://localhost:8080/webserv1/resources/ws2/parkingSpots/"+inputId ;
+      $.ajax( {
+      url: theUrl,
+      type: "GET",
+      dataType: "text",
+      success: function(result) {
+      var spotArray = JSON.parse(result);
+      var output="<h3>Parking Spots in " + inputId +"</h3>";
+      for(var i=0; i<spotArray.length;i++)
+      {
+      output += "<p>" + spotArray[i].parkingLotID + " "+ spotArray[i].parkingSpotID + " Space Type: " + spotArray[i].spaceType + " occupied: " + spotArray[i].occupied + " " + "</p>";
+      }
+      $("#p_retrieveAllSpots").html(output); },
+      error:function(xhr) {
+      $("#p_retrieveAllSpots").html("Error:"+xhr.status+ ""+xhr.statusText);}
+      } );
+      });
+      $("#btnOpenSpots").click(function() {
+      var inputId="extendedlot" ;
+      var theUrl =
+      "http://localhost:8080/webserv1/resources/ws2/openSpots/"+inputId ;
+      $.ajax( {
+      url: theUrl,
+      type: "GET",
+      dataType: "text",
+      success: function(result) {
+      var spotArray = JSON.parse(result);
+      var output="<h3>Open Spots in " + inputId +"</h3>";
+      for(var i=0; i<spotArray.length;i++)
+      {
+      output += spotArray[i].parkingSpotID + " , ";
+      }
+      $("#p_retrieveOpenSpots").html(output); },
+      error:function(xhr) {
+      $("#p_retrieveOpenSpots").html("Error:"+xhr.status+ ""+xhr.statusText);}
+      } );
+      });
+      });
+    </script>
+  </head>
+  <body>
+    <header>
+	<ul>
+	<li> <a href="index.html">HOME</a> </li>
+	<li> <a href="lots.html"> PARKING LOTS</a> </li>
+	<li> <a href="login.html"> LOGIN</a> </li>
+	</ul>
+    </header>
+    <h2>Extended Parking Lot</h2>
+    <img id="lot" src="Images/extended full.png" alt="extended full">
+    <div id="retrieveAllSpots">
+      <button id="btnAllSpots">All Spots</button>
+      <p id="p_retrieveAllSpots">List of Parking Spots Go Here</p>
+    </div>
+    <div id="retrieveOpenSpots">
+      <button id="btnOpenSpots">Open Spots</button>
+      <p id="p_retrieveOpenSpots">Open Spots Go Here</p>
+    </div>
+  </body>
+</html>
